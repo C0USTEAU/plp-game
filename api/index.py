@@ -4,13 +4,16 @@ import logging
 app = Flask(__name__)
 
 @app.route('/')
-def root():
-    logging.error("Rendering root template")
-    return render_template('root.html')
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
+
+@app.route('/gameweeks', methods=['GET', 'POST'])
+def gameweeks():
+    return render_template('gameweeks.html')
 
 @app.route('/start', methods=['GET', 'POST'])
 def start():
-    logging.error("Rendering start template")
     if request.method == 'POST':
         passphrase = request.form.get('passphrase')
         if not passphrase:
