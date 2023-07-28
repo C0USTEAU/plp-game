@@ -5,12 +5,12 @@ app = Flask(__name__)
 
 @app.route('/')
 def root():
-    logging.info("Rendering root template")
+    logging.error("Rendering root template")
     return render_template('root.html')
 
 @app.route('/start', methods=['GET', 'POST'])
 def start():
-    logging.info("Rendering start template")
+    logging.error("Rendering start template")
     if request.method == 'POST':
         passphrase = request.form.get('passphrase')
         if not passphrase:
