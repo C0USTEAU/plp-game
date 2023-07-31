@@ -16,8 +16,20 @@
     </style>
 </head>
 <body>
-    <h1>PLP Gameweeks</h1>
-    <p><h2><a href="/dashboard">Dashboard</a></h2></p>
+    <h1>PLP Gameweeks</h1><br><br>
+    <p><h2><a href="/dashboard">Dashboard</a></h2></p><br><br>
+    <form action="/gameweeks" method="post">
+        <label for="gameweek">Select Gameweek:</label>
+        <select id="gameweek" name="gameweek">
+            <option value="-1">Select a Gameweek</option>
+            {% for fixture in fixtures %}
+                {% if loop.first or fixture[0] != fixtures[loop.index0 - 1][0] %}
+                    <option value="{{ fixture[0] }}">{{ fixture[0] }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <input type="submit" value="Show Fixtures">
+    </form>
 </body>
 </html>
 
