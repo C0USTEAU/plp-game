@@ -16,8 +16,8 @@
     </style>
 </head>
 <body>
-    <h1>PLP Gameweeks</h1><br><br>
-    <p><h2><a href="/dashboard">Dashboard</a></h2></p><br><br>
+    <h1>PLP Gameweeks</h1><br /><br />
+    <p><h2><a href="/dashboard">Dashboard</a></h2></p><br /><br />
     <form action="/gameweeks" method="post">
         <label for="gameweek">Select Gameweek:</label>
         <select id="gameweek" name="gameweek">
@@ -30,6 +30,18 @@
         </select>
         <input type="submit" value="Show Fixtures">
     </form>
+    {% if fixtures %}
+        {% if fixtures[0][0] != -1 %}
+            <h2>Fixtures for Gameweek {{ fixtures[0][0] }}</h2>
+        {% else %}
+            <h2>No Fixtures Selected</h2>
+        {% endif %}
+        <ul>
+            {% for fixture in fixtures %}
+                <li>{{ fixture[1] }} vs {{ fixture[2] }} - {{ fixture[3] }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 </body>
 </html>
 
