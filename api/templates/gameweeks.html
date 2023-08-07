@@ -38,7 +38,9 @@
         {% endif %}
         <ul>
             {% for fixture in fixtures %}
-                <li>{{ fixture[1] }} vs {{ fixture[2] }} - {{ fixture[3] }}</li>
+                {% if fixture[0] != -1 %}
+                    <li>{{ fixture[1] }} vs {{ fixture[2] }} - {{ fixture[3] }}</li>
+                {% endif %} 
             {% endfor %}
         </ul>
     {% endif %}

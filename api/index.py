@@ -4,6 +4,7 @@ import logging
 app = Flask(__name__)
 
 fixtures = [
+    (-1, '', '', ''),
     (1, 'Burnley', 'Man City', '2023-08-11T19:00:00Z'),
     (1, 'Arsenal', "Nott'm Forest", '2023-08-12T11:30:00Z'),
     (2, 'Bournemouth', 'West Ham', '2023-08-12T14:00:00Z'),
@@ -27,7 +28,8 @@ def gameweeks():
         selected_gameweek = int(request.form.get('gameweek'))
         selected_fixtures = [f for f in fixtures if f[0] == selected_gameweek]
         return render_template('gameweeks.html', fixtures=selected_fixtures)
-    return render_template('gameweeks.html', fixtures=fixtures)
+    else if request.method == 'GET':
+        return render_template('gameweeks.html', fixtures=fixtures)
 
 @app.route('/start', methods=['GET', 'POST'])
 def start():
