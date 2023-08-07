@@ -30,7 +30,7 @@ def gameweeks():
         return render_template('gameweeks.html', fixtures=selected_fixtures)
     elif request.method == 'GET':
         return render_template('gameweeks.html', fixtures=fixtures)
-    else
+    else:
         return render_template('gameweeks.html', fixtures=selected_fixtures)
 
 
