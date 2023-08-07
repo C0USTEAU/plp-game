@@ -28,8 +28,11 @@ def gameweeks():
         selected_gameweek = int(request.form.get('gameweek'))
         selected_fixtures = [f for f in fixtures if f[0] == selected_gameweek]
         return render_template('gameweeks.html', fixtures=selected_fixtures)
-    else request.method == 'GET':
+    elif request.method == 'GET':
         return render_template('gameweeks.html', fixtures=fixtures)
+    else
+        return render_template('gameweeks.html', fixtures=selected_fixtures)
+
 
 @app.route('/start', methods=['GET', 'POST'])
 def start():
